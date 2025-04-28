@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geggjadapp/data/moviedata.dart';
+import 'package:geggjadapp/utils/darkmode.dart';
+import 'package:geggjadapp/utils/lightmode.dart';
 import 'package:geggjadapp/widgets/movie_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,11 +12,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isDarkMode = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: Text('Bio paradís')),
+        appBar: AppBar(
+          title: Text('Bio paradís'),
+          actions: [
+            Switch(
+              value: isDarkMode,
+              onChanged: (value) {
+                setState(() {
+                  isDarkMode = !isDarkMode;
+                });
+              },
+            ),
+          ],
+        ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
@@ -22,20 +38,14 @@ class _HomeScreenState extends State<HomeScreen> {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: MovieCard(
-                  movieList[index].title,
-                  movieList[index].imageUrl,
-                ),
+                child: MovieCard(movieList[index]),
               );
             },
           ),
         ),
         // body: ListView.builder(),
       ),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: isDarkMode ? darkmode : lightmode,
     );
   }
 }

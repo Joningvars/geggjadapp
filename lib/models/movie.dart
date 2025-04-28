@@ -5,8 +5,10 @@ class Movie {
   String releaseDate;
   String genre;
   String id;
+  String startTime;
 
   Movie({
+    required this.startTime,
     required this.id,
     required this.title,
     required this.description,

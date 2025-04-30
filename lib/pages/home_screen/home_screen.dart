@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isDarkMode = false;
   @override
   Widget build(BuildContext context) {
+    MediaQuery.of(context).size;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

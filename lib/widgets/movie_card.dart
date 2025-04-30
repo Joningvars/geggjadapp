@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geggjadapp/models/movie.dart';
-import 'package:geggjadapp/movie_screen.dart';
+import 'package:geggjadapp/pages/movie_screen/movie_screen.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard(this.movie, {super.key});
